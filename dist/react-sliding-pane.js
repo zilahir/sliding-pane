@@ -5,8 +5,8 @@ import Modal from 'react-modal';
 var CLOSE_TIMEOUT = 500;
 function ReactSlidingPane(_ref) {
   var isOpen = _ref.isOpen,
+      wrapperClass = _ref.wrapperClass,
       title = _ref.title,
-      subtitle = _ref.subtitle,
       onRequestClose = _ref.onRequestClose,
       onAfterOpen = _ref.onAfterOpen,
       children = _ref.children,
@@ -15,7 +15,9 @@ function ReactSlidingPane(_ref) {
       closeIcon = _ref.closeIcon,
       _ref$from = _ref.from,
       from = _ref$from === void 0 ? 'right' : _ref$from,
-      width = _ref.width;
+      width = _ref.width,
+      _ref$isCloseIconVisib = _ref.isCloseIconVisible,
+      isCloseIconVisible = _ref$isCloseIconVisib === void 0 ? true : _ref$isCloseIconVisib;
   var directionClass = "slide-pane_from_".concat(from);
   return React.createElement(Modal, {
     className: "slide-pane ".concat(directionClass, " ").concat(className || ''),
@@ -35,13 +37,9 @@ function ReactSlidingPane(_ref) {
   }, React.createElement("div", {
     className: "slide-pane__close",
     onClick: onRequestClose
-  }, closeIcon ? closeIcon : React.createElement(IconClose, null)), React.createElement("div", {
-    className: "slide-pane__title-wrapper"
-  }, React.createElement("h2", {
-    className: "slide-pane__title"
-  }, title), React.createElement("div", {
-    className: "slide-pane__subtitle"
-  }, subtitle))), React.createElement("div", {
+  }, closeIcon && isCloseIconVisible ? closeIcon : React.createElement(IconClose, null)), React.createElement("div", {
+    className: "slide-pane__title-wrapper ".concat(wrapperClass)
+  }, title)), React.createElement("div", {
     className: "slide-pane__content"
   }, children));
 }
@@ -56,7 +54,9 @@ ReactSlidingPane.propTypes = {
   overlayClassName: PropTypes.string,
   from: PropTypes.oneOf(['left', 'right', 'bottom']),
   width: PropTypes.string,
-  closeIcon: PropTypes.any
+  closeIcon: PropTypes.any,
+  wrapperClass: PropTypes.string,
+  isCloseIconVisible: PropTypes.bool
 };
 
 function IconClose() {

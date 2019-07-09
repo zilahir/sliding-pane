@@ -8,8 +8,8 @@ const CLOSE_TIMEOUT = 500;
 
 export default function ReactSlidingPane({
     isOpen,
+    wrapperClass,
     title,
-    subtitle,
     onRequestClose,
     onAfterOpen,
     children,
@@ -17,7 +17,8 @@ export default function ReactSlidingPane({
     overlayClassName,
     closeIcon,
     from = 'right',
-    width
+    width,
+    isCloseIconVisible = true
 }) {
     const directionClass = `slide-pane_from_${from}`;
 
@@ -34,11 +35,12 @@ export default function ReactSlidingPane({
         contentLabel={ `Modal "${title || ''}"` }>
         <div className='slide-pane__header'>
             <div className='slide-pane__close' onClick={ onRequestClose }>
-              { closeIcon ? closeIcon : <IconClose /> }
+              { closeIcon && isCloseIconVisible ? closeIcon : <IconClose /> }
             </div>
-            <div className='slide-pane__title-wrapper'>
-                <h2 className='slide-pane__title'>{ title }</h2>
-                <div className='slide-pane__subtitle'>{ subtitle }</div>
+            <div className={`slide-pane__title-wrapper ${wrapperClass}`}>
+                {
+                    title
+                }
             </div>
         </div>
         <div className='slide-pane__content'>
@@ -58,7 +60,9 @@ ReactSlidingPane.propTypes = {
     overlayClassName: PropTypes.string,
     from: PropTypes.oneOf(['left', 'right', 'bottom']),
     width: PropTypes.string,
-    closeIcon: PropTypes.any
+    closeIcon: PropTypes.any,
+    wrapperClass: PropTypes.string, 
+    isCloseIconVisible: PropTypes.bool
 };
 
 function IconClose() {
