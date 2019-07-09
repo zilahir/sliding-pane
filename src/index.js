@@ -34,9 +34,13 @@ export default function ReactSlidingPane({
         onRequestClose={ onRequestClose }
         contentLabel={ `Modal "${title || ''}"` }>
         <div className='slide-pane__header'>
-            <div className='slide-pane__close' onClick={ onRequestClose }>
-              { closeIcon && isCloseIconVisible ? closeIcon : <IconClose /> }
-            </div>
+            {
+                isCloseIconVisible ? 
+                    <div className='slide-pane__close' onClick={ onRequestClose }>
+                        { closeIcon ? closeIcon : <IconClose /> }
+                    </div>
+                : null
+            }
             <div className={`slide-pane__title-wrapper ${wrapperClass}`}>
                 {
                     title
@@ -61,7 +65,7 @@ ReactSlidingPane.propTypes = {
     from: PropTypes.oneOf(['left', 'right', 'bottom']),
     width: PropTypes.string,
     closeIcon: PropTypes.any,
-    wrapperClass: PropTypes.string, 
+    wrapperClass: PropTypes.object,
     isCloseIconVisible: PropTypes.bool
 };
 

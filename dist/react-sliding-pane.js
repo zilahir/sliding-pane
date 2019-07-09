@@ -34,10 +34,10 @@ function ReactSlidingPane(_ref) {
     contentLabel: "Modal \"".concat(title || '', "\"")
   }, React.createElement("div", {
     className: "slide-pane__header"
-  }, React.createElement("div", {
+  }, isCloseIconVisible ? React.createElement("div", {
     className: "slide-pane__close",
     onClick: onRequestClose
-  }, closeIcon && isCloseIconVisible ? closeIcon : React.createElement(IconClose, null)), React.createElement("div", {
+  }, closeIcon ? closeIcon : React.createElement(IconClose, null)) : null, React.createElement("div", {
     className: "slide-pane__title-wrapper ".concat(wrapperClass)
   }, title)), React.createElement("div", {
     className: "slide-pane__content"
@@ -55,7 +55,7 @@ ReactSlidingPane.propTypes = {
   from: PropTypes.oneOf(['left', 'right', 'bottom']),
   width: PropTypes.string,
   closeIcon: PropTypes.any,
-  wrapperClass: PropTypes.string,
+  wrapperClass: PropTypes.object,
   isCloseIconVisible: PropTypes.bool
 };
 
