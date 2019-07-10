@@ -18,7 +18,8 @@ export default function ReactSlidingPane({
     closeIcon,
     from = 'right',
     width,
-    isCloseIconVisible = true
+    isCloseIconVisible = true,
+    headerClass = ''
 }) {
     const directionClass = `slide-pane_from_${from}`;
 
@@ -33,7 +34,7 @@ export default function ReactSlidingPane({
         onAfterOpen={ onAfterOpen }
         onRequestClose={ onRequestClose }
         contentLabel={ `Modal "${title || ''}"` }>
-        <div className='slide-pane__header'>
+        <div className={`slide-pane__header ${headerClass}`}>
             {
                 isCloseIconVisible ? 
                     <div className='slide-pane__close' onClick={ onRequestClose }>
@@ -66,7 +67,8 @@ ReactSlidingPane.propTypes = {
     width: PropTypes.string,
     closeIcon: PropTypes.any,
     wrapperClass: PropTypes.object,
-    isCloseIconVisible: PropTypes.bool
+    isCloseIconVisible: PropTypes.bool,
+    headerClass: PropTypes.string
 };
 
 function IconClose() {

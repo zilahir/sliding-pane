@@ -1,6 +1,6 @@
 {
-  "name": "react-sliding-pane",
-  "version": "3.1.0",
+  "name": "@zilahir/react-sliding-pane",
+  "version": "1.1.0",
   "description": "Full height sliding pane",
   "main": "dist/react-sliding-pane.js",
   "scripts": {
@@ -27,12 +27,12 @@
     "dialog",
     "popup"
   ],
-  "author": "Dimitry Dushkin (dndushkin@gmail.com)",
+  "author": "Richard Zilahi <zilahi@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DimitryDushkin/sliding-pane/issues"
+    "url": "https://github.com/zilahir/sliding-pane"
   },
-  "homepage": "https://github.com/DimitryDushkin/sliding-pane",
+  "homepage": "https://github.com/zilahir/sliding-pane",
   "dependencies": {
     "prop-types": "^15.6.2",
     "react-modal": "^3.1.10",
