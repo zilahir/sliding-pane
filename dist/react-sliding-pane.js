@@ -17,7 +17,8 @@ function ReactSlidingPane(_ref) {
       from = _ref$from === void 0 ? 'right' : _ref$from,
       width = _ref.width,
       _ref$isCloseIconVisib = _ref.isCloseIconVisible,
-      isCloseIconVisible = _ref$isCloseIconVisib === void 0 ? true : _ref$isCloseIconVisib;
+      isCloseIconVisible = _ref$isCloseIconVisib === void 0 ? true : _ref$isCloseIconVisib,
+      headerClass = _ref.headerClass;
   var directionClass = "slide-pane_from_".concat(from);
   return React.createElement(Modal, {
     className: "slide-pane ".concat(directionClass, " ").concat(className || ''),
@@ -33,7 +34,7 @@ function ReactSlidingPane(_ref) {
     onRequestClose: onRequestClose,
     contentLabel: "Modal \"".concat(title || '', "\"")
   }, React.createElement("div", {
-    className: "slide-pane__header"
+    className: "slide-pane__header ".concat(headerClass || '')
   }, isCloseIconVisible ? React.createElement("div", {
     className: "slide-pane__close",
     onClick: onRequestClose
@@ -56,7 +57,8 @@ ReactSlidingPane.propTypes = {
   width: PropTypes.string,
   closeIcon: PropTypes.any,
   wrapperClass: PropTypes.object,
-  isCloseIconVisible: PropTypes.bool
+  isCloseIconVisible: PropTypes.bool,
+  headerClass: PropTypes.string
 };
 
 function IconClose() {

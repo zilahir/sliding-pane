@@ -19,7 +19,7 @@ export default function ReactSlidingPane({
     from = 'right',
     width,
     isCloseIconVisible = true,
-    headerClass = ''
+    headerClass
 }) {
     const directionClass = `slide-pane_from_${from}`;
 
@@ -34,7 +34,7 @@ export default function ReactSlidingPane({
         onAfterOpen={ onAfterOpen }
         onRequestClose={ onRequestClose }
         contentLabel={ `Modal "${title || ''}"` }>
-        <div className={`slide-pane__header ${headerClass}`}>
+        <div className={`slide-pane__header ${headerClass || ''}`}>
             {
                 isCloseIconVisible ? 
                     <div className='slide-pane__close' onClick={ onRequestClose }>
