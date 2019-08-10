@@ -19,7 +19,8 @@ function ReactSlidingPane(_ref) {
       _ref$isCloseIconVisib = _ref.isCloseIconVisible,
       isCloseIconVisible = _ref$isCloseIconVisib === void 0 ? true : _ref$isCloseIconVisib,
       headerClass = _ref.headerClass,
-      contentClass = _ref.contentClass;
+      contentClass = _ref.contentClass,
+      bgImage = _ref.bgImage;
   var directionClass = "slide-pane_from_".concat(from);
   return React.createElement(Modal, {
     className: "slide-pane ".concat(directionClass, " ").concat(className || ''),
@@ -35,6 +36,10 @@ function ReactSlidingPane(_ref) {
     onRequestClose: onRequestClose,
     contentLabel: "Modal \"".concat(title || '', "\"")
   }, React.createElement("div", {
+    style: {
+      backgroundImage: "url(".concat(bgImage, ")")
+    }
+  }, React.createElement("div", {
     className: "slide-pane__header ".concat(headerClass || '')
   }, isCloseIconVisible ? React.createElement("div", {
     className: "slide-pane__close",
@@ -43,9 +48,10 @@ function ReactSlidingPane(_ref) {
     className: "slide-pane__title-wrapper ".concat(wrapperClass)
   }, title)), React.createElement("div", {
     className: "slide-pane__content ".concat(contentClass || '')
-  }, children));
+  }, children)));
 }
 ReactSlidingPane.propTypes = {
+  bgImage: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
   title: PropTypes.any,
   subtitle: PropTypes.any,
