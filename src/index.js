@@ -20,14 +20,15 @@ export default function ReactSlidingPane({
     width,
     isCloseIconVisible = true,
     headerClass,
-    contentClass
+    contentClass,
+    bgImage
 }) {
     const directionClass = `slide-pane_from_${from}`;
 
     return <Modal
         className={ `slide-pane ${directionClass} ${className || ''}` }
         style={{
-            content: { width: width || '80%' }
+            content: { width: width || '80%' },
         }}
         overlayClassName={ `slide-pane__overlay ${overlayClassName || ''}`}
         closeTimeoutMS={ CLOSE_TIMEOUT }
@@ -35,27 +36,30 @@ export default function ReactSlidingPane({
         onAfterOpen={ onAfterOpen }
         onRequestClose={ onRequestClose }
         contentLabel={ `Modal "${title || ''}"` }>
-        <div className={`slide-pane__header ${headerClass || ''}`}>
-            {
-                isCloseIconVisible ? 
-                    <div className='slide-pane__close' onClick={ onRequestClose }>
-                        { closeIcon ? closeIcon : <IconClose /> }
-                    </div>
-                : null
-            }
-            <div className={`slide-pane__title-wrapper ${wrapperClass}`}>
+        <div style={{backgroundImage: `url(${bgImage})`}}>
+            <div className={`slide-pane__header ${headerClass || ''}`}>
                 {
-                    title
+                    isCloseIconVisible ? 
+                        <div className='slide-pane__close' onClick={ onRequestClose }>
+                            { closeIcon ? closeIcon : <IconClose /> }
+                        </div>
+                    : null
                 }
+                <div className={`slide-pane__title-wrapper ${wrapperClass}`}>
+                    {
+                        title
+                    }
+                </div>
             </div>
-        </div>
-        <div className={`slide-pane__content ${contentClass || ''}`}>
-            { children }
+            <div className={`slide-pane__content ${contentClass || ''}`}>
+                { children }
+            </div>
         </div>
     </Modal>;
 }
 
 ReactSlidingPane.propTypes = {
+    bgImage: PropTypes.string,
     isOpen: PropTypes.bool.isRequired,
     title: PropTypes.any,
     subtitle: PropTypes.any,
