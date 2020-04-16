@@ -15,9 +15,8 @@ function ReactSlidingPane(_ref) {
       closeIcon = _ref.closeIcon,
       _ref$from = _ref.from,
       from = _ref$from === void 0 ? 'right' : _ref$from,
-      width = _ref.width,
       _ref$isCloseIconVisib = _ref.isCloseIconVisible,
-      isCloseIconVisible = _ref$isCloseIconVisib === void 0 ? true : _ref$isCloseIconVisib,
+      isCloseIconVisible = _ref$isCloseIconVisib === void 0 ? false : _ref$isCloseIconVisib,
       headerClass = _ref.headerClass,
       contentClass = _ref.contentClass,
       bgImage = _ref.bgImage,
@@ -25,11 +24,6 @@ function ReactSlidingPane(_ref) {
   var directionClass = "slide-pane_from_".concat(from);
   return React.createElement(Modal, {
     className: "slide-pane ".concat(directionClass, " ").concat(className || ''),
-    style: {
-      content: {
-        width: width || '80%'
-      }
-    },
     overlayClassName: "slide-pane__overlay ".concat(overlayClassName || ''),
     closeTimeoutMS: CLOSE_TIMEOUT,
     isOpen: isOpen,
@@ -54,21 +48,22 @@ function ReactSlidingPane(_ref) {
 }
 ReactSlidingPane.propTypes = {
   bgImage: PropTypes.string,
-  isOpen: PropTypes.bool.isRequired,
-  title: PropTypes.any,
-  subtitle: PropTypes.any,
-  onRequestClose: PropTypes.func,
-  onAfterOpen: PropTypes.func,
   children: PropTypes.any.isRequired,
   className: PropTypes.string,
-  overlayClassName: PropTypes.string,
-  from: PropTypes.oneOf(['left', 'right', 'bottom']),
-  width: PropTypes.string,
   closeIcon: PropTypes.any,
-  wrapperClass: PropTypes.object,
-  isCloseIconVisible: PropTypes.bool,
+  contentClass: PropTypes.string,
+  from: PropTypes.oneOf(['left', 'right', 'bottom']),
   headerClass: PropTypes.string,
-  contentClass: PropTypes.string
+  innerWrapperClass: PropTypes.string,
+  isCloseIconVisible: PropTypes.bool,
+  isOpen: PropTypes.bool.isRequired,
+  onAfterOpen: PropTypes.func,
+  onRequestClose: PropTypes.func,
+  overlayClassName: PropTypes.string,
+  subtitle: PropTypes.any,
+  title: PropTypes.any,
+  width: PropTypes.string,
+  wrapperClass: PropTypes.object
 };
 
 function IconClose() {
